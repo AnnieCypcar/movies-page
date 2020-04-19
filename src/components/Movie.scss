@@ -1,0 +1,21 @@
+.movie-container {
+    width: 25%;
+    margin-bottom: 20px;
+    .poster {
+        padding: 0 12%;
+        img {
+            width: 100%;
+        }
+    }
+    span {
+        display: inline-block;
+        width: 100%;
+        &.movie-title {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        &.movie-release-date {
+            font-size: .8rem;
+        }
+    }
+}
