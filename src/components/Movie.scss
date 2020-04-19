@@ -1,6 +1,22 @@
 .movie-container {
     width: 25%;
     margin-bottom: 20px;
+    .rating-top-left {
+        width: 0;
+        height: 0;
+        border: 1px solid black;
+        background: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 1%;
+        margin-top: -1%;
+        span.movie-rating {
+            margin-top: 7px;
+            font-size: .8rem;
+        }
+    }
     .poster {
         padding: 0 12%;
         img {
@@ -11,8 +27,8 @@
         display: inline-block;
         width: 100%;
         &.movie-title {
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: .9rem;
+            font-weight: 600;
         }
         &.movie-release-date {
             font-size: .8rem;

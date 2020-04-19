@@ -19,8 +19,8 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const query = `year=2016&language=${LANGUAGE.ENGLISH}&${SORT_BY}=\
-            ${SORT_OPTIONS.POPULARITY}.${SORT_DIRECTION.DESC}&limit=${LIMIT.PAGE_MAX}`;
+        const query = `primary_release_year=2016&language=${LANGUAGE.ENGLISH}&\
+            ${SORT_BY}=${SORT_OPTIONS.POPULARITY}.${SORT_DIRECTION.DESC}&limit=${LIMIT.PAGE_MAX}`;
 
         Api.getMovieData(query).then((data) => {
             if (data && data.results) {

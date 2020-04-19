@@ -36,6 +36,9 @@ const Movie = ({ data }) => {
     const formattedDate = `${MONTHS[releaseDate.getMonth()]} ${releaseDate.getDate()}, ${releaseDate.getFullYear()}`;
     return (
         <div className='movie-container' key={data.id}>
+            <div className='rating-top-left'>
+                <span className='movie-rating'>{data.popularity.toFixed()}%</span>
+            </div>
             <div className='poster'>
                 <img
                     src={BASE_IMAGE_URL + SIZE.MEDIUM + data.poster_path}
