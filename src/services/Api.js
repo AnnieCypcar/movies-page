@@ -9,8 +9,10 @@ export default class Api {
     static async getMoviesWithQuery(query) {
         try {
             const rquestUrl = `${BASE_API_URL}/discover/movie?api_key=${API_KEY}&${query}`;
-            return await axios.get(rquestUrl)
-                .then((resp) => resp.data);
+            const resp = await axios.get(rquestUrl);
+            if (resp) {
+                return resp.data;
+            }
         } catch (error) {
             console.error('There was an error requesting the movies data', error);
         }
@@ -22,8 +24,10 @@ export default class Api {
     static async getMovieDetails(id) {
         try {
             const rquestUrl = `${BASE_API_URL}/movie/${id}?api_key=${API_KEY}`;
-            return await axios.get(rquestUrl)
-                .then((resp) => resp.data);
+            const resp = await axios.get(rquestUrl)
+            if (resp) {
+                return resp.data;
+            }
         } catch (error) {
             console.error('There was an error requesting the movie details', error);
         }
