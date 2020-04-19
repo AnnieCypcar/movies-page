@@ -2,7 +2,7 @@ export const BASE_API_URL = 'https://api.themoviedb.org/3';
 
 export const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p';
 
-export const SIZE = { SMALL: '/w200', MEDIUM: '/w500', LARGE: '/w800' };
+export const SIZE = { SMALL: '/w200', MEDIUM: '/w300', LARGE: '/w500' };
 
 export const SORT_BY = 'sort_by';
 

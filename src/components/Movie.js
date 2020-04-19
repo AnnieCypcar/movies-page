@@ -31,21 +31,23 @@ maintain favorites throughout navigation during a session.
 */
 
 
-const Movie = ({ data }) => {
+const Movie = ({ data, showDetails }) => {
     const releaseDate = new Date(data.release_date);
     const formattedDate = `${MONTHS[releaseDate.getMonth()]} ${releaseDate.getDate()}, ${releaseDate.getFullYear()}`;
+
     return (
         <div className='movie-container' key={data.id}>
-            <div className='rating-top-left'>
-                <span className='movie-rating'>{data.popularity.toFixed()}%</span>
+            <div className='movie-rating-top-left'>
+                <span className='movie-rating'>{Math.round(data.popularity)}%</span>
             </div>
-            <div className='poster'>
+            <div className='movie-poster'>
                 <img
-                    src={BASE_IMAGE_URL + SIZE.MEDIUM + data.poster_path}
+                    src={BASE_IMAGE_URL + SIZE.SMALL + data.poster_path}
                     alt={data.original_title} />
             </div>
             <span className='movie-title'>{data.original_title}</span>
             <span className='movie-release-date'>{formattedDate}</span>
+            <button className='movie-show-details-button' onClick={showDetails}>show details</button>
         </div>
     )
 }

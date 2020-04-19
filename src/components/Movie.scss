@@ -1,7 +1,7 @@
 .movie-container {
     width: 25%;
     margin-bottom: 20px;
-    .rating-top-left {
+    .movie-rating-top-left {
         width: 0;
         height: 0;
         border: 1px solid black;
@@ -17,7 +17,7 @@
             font-size: .8rem;
         }
     }
-    .poster {
+    .movie-poster {
         padding: 0 12%;
         img {
             width: 100%;

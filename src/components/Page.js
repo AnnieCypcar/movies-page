@@ -30,7 +30,7 @@ maintain favorites throughout navigation during a session.
 */
 
 
-const Page = ({ items }) => {
+const Page = ({ items, showDetails }) => {
     return (
         <div className='page-container'>
             <h1>Top Movies from 2016</h1>
@@ -40,6 +40,7 @@ const Page = ({ items }) => {
                         <Movie
                             key={item.id}
                             data={item}
+                            showDetails={() => showDetails(item.id)}
                         />
                     )
                 })}
