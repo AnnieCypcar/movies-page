@@ -17,7 +17,9 @@ class App extends Component {
         this.state = {
             items: [],
             isDetailVisible: false,
-            details: {}
+            details: {},
+            favorites: [],
+            isFavorite: false
         };
         this.handleShowMovie = this.handleShowMovie.bind(this);
     }
@@ -50,6 +52,21 @@ class App extends Component {
         });
     }
 
+    handleFavorite() {
+        const isFavorite = !this.state.isFavorite;
+        const favorites = this.state.favorites.slice();
+        if (isFavorite && !favorites.includes(this.state.details.id)) {
+            favorites.push(this.state.details.id);
+        } else if (!isFavorite && favorites.includes(this.state.details.id)) {
+            const favoriteIndex = favorites.indexOf(this.state.details.id);
+            favorites.splice(favoriteIndex, 1);
+        }
+        this.setState({
+            isFavorite,
+            favorites
+        })
+    }
+
     render() {
         const appClasses = `app ${this.state.isDetailVisible ? 'modal-is-open' : ''}`;
         return (
@@ -60,7 +77,9 @@ class App extends Component {
                 {this.state.isDetailVisible &&
                     <MovieDetail
                         data={this.state.details}
-                        closeDetail={() => this.closeDetail()} />}
+                        closeDetail={() => this.closeDetail()}
+                        isFavorite={this.state.favorites.includes(this.state.details.id)}
+                        handleFavorite={() => this.handleFavorite()} />}
             </div>
         );
     }
