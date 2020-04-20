@@ -20,6 +20,11 @@ const movies = [{
     original_title: 'blah'
 }];
 
+const movie0Detail = {
+    ...movies[0],
+    overview: 'This movie is way too cool.'
+}
+
 test('renders the movie page on first load', () => {
     const { getByText, container } = render(<App />);
     const pageTitle = getByText(/Top Movies from 2016/i);
@@ -28,7 +33,7 @@ test('renders the movie page on first load', () => {
     expect(container.firstChild.className).toEqual('app ');
 });
 
-test('renders the movie items when the api succeeds', async () => {
+test('retrieves the movie items when the api succeeds', async () => {
     const resp = { data: { results: movies } };
     axios.get.mockResolvedValue(resp);
 
@@ -36,9 +41,9 @@ test('renders the movie items when the api succeeds', async () => {
     expect(data.results).toEqual(movies);
 });
 
-test('renders the detail view when show details is clicked', async () => {
+test('renders the detail view when show details is clicked', () => {
     const mockShowDetails = (id) => id;
-    const { queryByAltText, container, getAllByText } = render(
+    const { queryByAltText, container, getAllByText, getByText } = render(
         <Page items={movies} showDetails={(id) => mockShowDetails(id)} />
     );
 
@@ -46,7 +51,17 @@ test('renders the detail view when show details is clicked', async () => {
     fireEvent.click(detailButton);
 
     const imageAlt = queryByAltText(/cool movie/i);
+    const movieTitle = getByText(/cool movie/i);
 
     expect(container.firstChild.className).toEqual('page-container');
+    expect(movieTitle).toBeInTheDocument();
     expect(imageAlt).toBeInTheDocument();
+});
+
+test('retrieves the movie details when the api succeeds', async () => {
+    const resp = { data: movie0Detail };
+    axios.get.mockResolvedValue(resp);
+
+    const data = await Api.getMovieDetails(movie0Detail.id);
+    expect(data).toEqual(movie0Detail);
 });

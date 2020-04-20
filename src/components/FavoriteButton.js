@@ -18,7 +18,6 @@ class FavoriteButton extends Component {
         ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
         ctx.fillStyle = this.props.isFavorite ? 'red' : 'blue';
         ctx.fill();
-
     }
     componentDidUpdate() {
         const ctx = this.favoriteRef.current.getContext('2d');
@@ -27,9 +26,7 @@ class FavoriteButton extends Component {
     }
     render() {
         return (
-            <div className='favorite-button'>
-                <canvas ref={this.favoriteRef} data-testid='canvas' onClick={this.props.handleFavorite} />
-            </div>
+            <canvas ref={this.favoriteRef} className='favorite-button' data-testid='canvas' onClick={this.props.handleFavorite} />
         )
     }
 }
