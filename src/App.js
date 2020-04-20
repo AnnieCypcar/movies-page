@@ -21,7 +21,6 @@ class App extends Component {
             favorites: [],
             isFavorite: false
         };
-        this.handleShowMovie = this.handleShowMovie.bind(this);
     }
 
     async componentDidMount() {
